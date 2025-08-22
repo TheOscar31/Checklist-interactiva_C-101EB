@@ -2,130 +2,212 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DCS Checklist</title>
+  <title>DCS CHECKLIST</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       background: #111;
       color: #eee;
-      margin: 0;
-      padding: 1rem;
+      padding: 20px;
     }
     h2 {
-      margin-top: 1rem;
-      padding: 0.5rem;
+      margin-top: 30px;
+      padding: 10px;
       background: #222;
       border-radius: 8px;
     }
-    h2.completed {
-      background: #0a0;
-      color: white;
+    .section.done h2 {
+      background: #145214;
+      color: #fff;
     }
     label {
-      display: flex;
-      align-items: center;
-      margin: 0.3rem 0;
-      padding: 0.3rem;
-      background: #222;
-      border-radius: 6px;
+      display: block;
+      padding: 5px;
+      margin: 3px 0;
+      border-radius: 5px;
     }
     label.completed {
-      background: #004400;
-      color: #0f0;
+      background: #145214;
+      color: #fff;
     }
-    input[type="checkbox"] {
-      margin-right: 0.6rem;
-      transform: scale(1.3);
+    label.pending {
+      background: #8a6d00;
+      color: #fff;
     }
-    .warning {
-      color: #ffcc00;
-      font-weight: bold;
-      margin-left: auto;
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background: #444;
+      color: #fff;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #666;
     }
   </style>
 </head>
 <body>
+  <h1>DCS CHECKLIST</h1>
 
-  <h1>🛫 DCS Interactive Checklist</h1>
-
+  <!-- START -->
   <div class="section" id="start">
-    <h2>Start Checklist</h2>
-    <label><input type="checkbox"> Parking Brake: SET</label>
-    <label><input type="checkbox"> Battery: ON</label>
-    <label><input type="checkbox"> GPU: ON</label>
-    <label><input type="checkbox"> Bus Tie: ON</label>
-    <label><input type="checkbox"> Inverter: RESERVE <span class="warning">⚠ usado más tarde</span></label>
-    <label><input type="checkbox"> Oxygen: ON</label>
-    <label><input type="checkbox"> External Lights: ON</label>
-    <label><input type="checkbox"> Seat: ADJUST</label>
-    <label><input type="checkbox"> Computador: ON</label>
-    <label><input type="checkbox"> Fuel Pumps: TEST/AUT</label>
-    <!-- ... puedes seguir completando con todos los pasos -->
+    <h2>START CHECKLIST</h2>
+    <label><input type="checkbox" data-id="start1" data-triggers="shutdown19"> PARKING BRAKE: SET</label>
+    <label><input type="checkbox" data-id="start2"> BATTERY: ON</label>
+    <label><input type="checkbox" data-id="start3" data-triggers="start19"> GPU: ON</label>
+    <label><input type="checkbox" data-id="start4"> BUS TIE: ON</label>
+    <label><input type="checkbox" data-id="start5" data-triggers="start13"> INVERTER: RESERVE</label>
+    <label><input type="checkbox" data-id="start6"> OXYGEN: ON</label>
+    <label><input type="checkbox" data-id="start7"> EXTERNAL LIGHTS: ON</label>
+    <label><input type="checkbox" data-id="start8"> SEAT: ADJUST</label>
+    <label><input type="checkbox" data-id="start9"> COMPUTADOR: ON</label>
+    <label><input type="checkbox" data-id="start10"> FUEL PUMPS: TEST/AUT</label>
+    <label><input type="checkbox" data-id="start11"> SUB FUEL PUMP: ON</label>
+    <label><input type="checkbox" data-id="start12"> FUEL VALVE: ON</label>
+    <label><input type="checkbox" data-id="start13" data-triggers="shutdown14"> INVERTER: NORMAL</label>
+    <label><input type="checkbox" data-id="start14"> UHF/VHF: TUNED</label>
+    <label><input type="checkbox" data-id="start15"> ATC: REQUEST START</label>
+    <label><input type="checkbox" data-id="start16"> ANNUNC (4 REDS+1 AMBER)</label>
+    <label><input type="checkbox" data-id="start17"> STARTER: ON 2 SEC</label>
+    <label><input type="checkbox" data-id="start18"> THROTTLE: IDLE</label>
+    <label><input type="checkbox" data-id="start19"> GPU: OFF</label>
+    <label><input type="checkbox" data-id="start20"> GENERATOR: RESET, ON</label>
+    <label><input type="checkbox" data-id="start21"> UHF/VOR/TACAN/VHF: ON</label>
+    <label><input type="checkbox" data-id="start22"> STBY HORIZ</label>
+    <label><input type="checkbox" data-id="start23"> IFF: STBY</label>
+    <label><input type="checkbox" data-id="start24"> HYDRAULICS: GREEN</label>
+    <label><input type="checkbox" data-id="start25"> AIR BRAKES: TEST, IN</label>
+    <label><input type="checkbox" data-id="start26"> FLAPS: TEST, TAKE OFF</label>
+    <label><input type="checkbox" data-id="start27" data-triggers="shutdown6"> PITOT HEAT: ON</label>
+    <label><input type="checkbox" data-id="start28"> STALL WARNING: TEST, ON</label>
+    <label><input type="checkbox" data-id="start29"> INT/EXT LIGHTS: SET</label>
+    <label><input type="checkbox" data-id="start30"> CANOPY: CLOSED, LOCKED</label>
+    <label><input type="checkbox" data-id="start31"> AIR COND: RESET, ON</label>
+    <label><input type="checkbox" data-id="start32"> T.O TRIM: 1,5 DN</label>
+    <label><input type="checkbox" data-id="start33"> FLT CONTROLS: CHECK</label>
+    <label><input type="checkbox" data-id="start34" data-triggers="shutdown1"> EJECTION PIN: REMOVE</label>
+    <label><input type="checkbox" data-id="start35" data-triggers="shutdown2"> PARKING BRAKE: RELEASE</label>
   </div>
 
-  <div class="section" id="beforeTakeoff">
-    <h2>Before Takeoff Checklist</h2>
-    <label><input type="checkbox"> LDG Lights: ON</label>
-    <label><input type="checkbox"> Flaps: TAKE OFF <span class="warning">⚠ revisar cambio previo</span></label>
-    <label><input type="checkbox"> IGN: CONT</label>
+  <!-- BEFORE TAKEOFF -->
+  <div class="section" id="bto">
+    <h2>BEFORE TAKEOFF CHECKLIST</h2>
+    <label><input type="checkbox" data-id="bto1"> LDG LIGHTS: ON</label>
+    <label><input type="checkbox" data-id="bto2"> FLAPS: TAKE OFF</label>
+    <label><input type="checkbox" data-id="bto3" data-triggers="ato5"> IGN: CONT</label>
   </div>
 
-  <div class="section" id="afterTakeoff">
-    <h2>After Takeoff Checklist</h2>
-    <label><input type="checkbox"> Gear: UP</label>
-    <label><input type="checkbox"> Flaps: TAKE OFF</label>
-    <label><input type="checkbox"> LDG Lights: ON</label>
-    <label><input type="checkbox"> EXT Lights: ON</label>
-    <label><input type="checkbox"> IGN: OFF</label>
+  <!-- AFTER TAKEOFF -->
+  <div class="section" id="ato">
+    <h2>AFTER TAKEOFF CHECKLIST</h2>
+    <label><input type="checkbox" data-id="ato1"> GEAR: UP</label>
+    <label><input type="checkbox" data-id="ato2"> FLAPS: TAKE OFF</label>
+    <label><input type="checkbox" data-id="ato3"> LDG LIGHTS: ON</label>
+    <label><input type="checkbox" data-id="ato4"> EXT LIGHTS: ON</label>
+    <label><input type="checkbox" data-id="ato5" data-triggers="ldg5"> IGN: OFF</label>
   </div>
 
-  <div class="section" id="landing">
-    <h2>Landing Checklist</h2>
-    <label><input type="checkbox"> Gear: DOWN</label>
-    <label><input type="checkbox"> Flaps: FULL</label>
-    <label><input type="checkbox"> LDG Lights: ON</label>
-    <label><input type="checkbox"> EXT Lights: ON</label>
-    <label><input type="checkbox"> IGN: CONT</label>
+  <!-- LANDING -->
+  <div class="section" id="ldg">
+    <h2>LANDING CHECKLIST</h2>
+    <label><input type="checkbox" data-id="ldg1"> GEAR: DOWN</label>
+    <label><input type="checkbox" data-id="ldg2"> FLAPS: FULL</label>
+    <label><input type="checkbox" data-id="ldg3"> LDG LIGHTS: ON</label>
+    <label><input type="checkbox" data-id="ldg4"> EXT LIGHTS: ON</label>
+    <label><input type="checkbox" data-id="ldg5"> IGN: CONT</label>
   </div>
 
+  <!-- SHUTDOWN -->
   <div class="section" id="shutdown">
-    <h2>Shutdown Checklist</h2>
-    <label><input type="checkbox"> Ejection Pin: INSERT</label>
-    <label><input type="checkbox"> Parking Brake: SET</label>
-    <label><input type="checkbox"> Speed Brake: IN</label>
-    <label><input type="checkbox"> Flaps: UP</label>
-    <label><input type="checkbox"> Throttle: OFF</label>
-    <!-- ... seguir con los pasos -->
+    <h2>SHUTDOWN CHECKLIST</h2>
+    <label><input type="checkbox" data-id="shutdown1"> EJECTION PIN: INSERT</label>
+    <label><input type="checkbox" data-id="shutdown2"> PARKING BRAKE: SET</label>
+    <label><input type="checkbox" data-id="shutdown3"> SPEED BRAKE: IN</label>
+    <label><input type="checkbox" data-id="shutdown4"> FLAPS: UP</label>
+    <label><input type="checkbox" data-id="shutdown5"> LDG & TAXI LIGHTS: OFF</label>
+    <label><input type="checkbox" data-id="shutdown6"> PITOT HEAT: OFF</label>
+    <label><input type="checkbox" data-id="shutdown7"> AIR COND: OFF</label>
+    <label><input type="checkbox" data-id="shutdown8"> CANOPY: OPEN</label>
+    <label><input type="checkbox" data-id="shutdown9"> THROTTLE: OFF</label>
+    <label><input type="checkbox" data-id="shutdown10"> UHF/VHF/TACAN/VOR/IFF: OFF</label>
+    <label><input type="checkbox" data-id="shutdown11"> FUEL PUMPS: OFF</label>
+    <label><input type="checkbox" data-id="shutdown12"> SUB FUEL PUMP: OFF</label>
+    <label><input type="checkbox" data-id="shutdown13"> FUEL VALVE: OFF</label>
+    <label><input type="checkbox" data-id="shutdown14"> INVERTER: OFF</label>
+    <label><input type="checkbox" data-id="shutdown15"> OXYGEN: OFF</label>
+    <label><input type="checkbox" data-id="shutdown16"> INT/EXT LIGHTS: OFF</label>
+    <label><input type="checkbox" data-id="shutdown17"> GENERATOR: OFF</label>
+    <label><input type="checkbox" data-id="shutdown18"> BUS TIE: OFF</label>
+    <label><input type="checkbox" data-id="shutdown19"> BATTERY: OFF</label>
   </div>
 
-<script>
-  const sections = document.querySelectorAll(".section");
+  <button id="reset">🔄 REINICIAR CHECKLIST</button>
 
-  sections.forEach(section => {
-    const checkboxes = section.querySelectorAll("input[type=checkbox]");
-    const title = section.querySelector("h2");
+  <script>
+    const checkboxes = document.querySelectorAll("input[type=checkbox]");
+    const resetBtn = document.getElementById("reset");
+
+    // Restaurar estado guardado
+    checkboxes.forEach(cb => {
+      const id = cb.dataset.id;
+      if (localStorage.getItem(id) === "true") {
+        cb.checked = true;
+        cb.parentElement.classList.add("completed");
+      }
+    });
+
+    function updateSections() {
+      document.querySelectorAll(".section").forEach(sec => {
+        const inputs = sec.querySelectorAll("input[type=checkbox]");
+        const allDone = Array.from(inputs).every(i => i.checked);
+        sec.classList.toggle("done", allDone);
+      });
+    }
+
+    function handleTriggers(cb) {
+      const trigger = cb.dataset.triggers;
+      if (trigger) {
+        const target = document.querySelector(`input[data-id="${trigger}"]`);
+        if (target && !target.checked) {
+          target.parentElement.classList.add("pending");
+        }
+      }
+    }
+
+    function checkWaits(cb) {
+      cb.parentElement.classList.remove("pending");
+      if (cb.checked) cb.parentElement.classList.add("completed");
+      else cb.parentElement.classList.remove("completed");
+    }
 
     checkboxes.forEach(cb => {
       cb.addEventListener("change", () => {
-        const label = cb.parentElement;
+        localStorage.setItem(cb.dataset.id, cb.checked);
         if (cb.checked) {
-          label.classList.add("completed");
+          cb.parentElement.classList.add("completed");
+          handleTriggers(cb);
         } else {
-          label.classList.remove("completed");
+          cb.parentElement.classList.remove("completed");
         }
-
-        // marcar título de sección si todos los pasos están completos
-        const allChecked = [...checkboxes].every(c => c.checked);
-        if (allChecked) {
-          title.classList.add("completed");
-        } else {
-          title.classList.remove("completed");
-        }
+        checkWaits(cb);
+        updateSections();
       });
+      checkWaits(cb);
     });
-  });
-</script>
 
+    updateSections();
+
+    resetBtn.addEventListener("click", () => {
+      checkboxes.forEach(cb => {
+        cb.checked = false;
+        cb.parentElement.classList.remove("completed","pending");
+        localStorage.removeItem(cb.dataset.id);
+      });
+      updateSections();
+    });
+  </script>
 </body>
 </html>
