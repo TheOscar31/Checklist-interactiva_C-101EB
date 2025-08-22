@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>DCS CHECKLIST</title>
+  <title>DCS Checklist interactiva C-101EB by TheOscar31</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -17,7 +17,7 @@
       border-radius: 8px;
     }
     .section.done h2 {
-      background: #145214;
+      background: #145214; /* verde oscuro sección completa */
       color: #fff;
     }
     label {
@@ -26,14 +26,19 @@
       margin: 3px 0;
       border-radius: 5px;
     }
-    label.completed {
-      background: #145214;
-      color: #fff;
-    }
     label.pending {
-      background: #8a6d00;
+      background: #8a6d00; /* naranja/amarillo aviso */
       color: #fff;
     }
+    label.checkbox-completed {
+      background: #1e7d1e; /* verde brillante para checkbox marcado */
+      color: #fff;
+    }
+
+    input[type="checkbox"] {
+      accent-color: #1e7d1e; /* verde brillante del check */
+    }
+
     button {
       margin-top: 20px;
       padding: 10px 20px;
@@ -50,9 +55,9 @@
   </style>
 </head>
 <body>
-  <h1>DCS CHECKLIST</h1>
+  <h1>DCS Checklist interactiva C-101EB by TheOscar31</h1>
 
-  <!-- START -->
+  <!-- START CHECKLIST -->
   <div class="section" id="start">
     <h2>START CHECKLIST</h2>
     <label><input type="checkbox" data-id="start1" data-triggers="shutdown19"> PARKING BRAKE: SET</label>
@@ -92,7 +97,7 @@
     <label><input type="checkbox" data-id="start35" data-triggers="shutdown2"> PARKING BRAKE: RELEASE</label>
   </div>
 
-  <!-- BEFORE TAKEOFF -->
+  <!-- BEFORE TAKEOFF CHECKLIST -->
   <div class="section" id="bto">
     <h2>BEFORE TAKEOFF CHECKLIST</h2>
     <label><input type="checkbox" data-id="bto1"> LDG LIGHTS: ON</label>
@@ -100,7 +105,7 @@
     <label><input type="checkbox" data-id="bto3" data-triggers="ato5"> IGN: CONT</label>
   </div>
 
-  <!-- AFTER TAKEOFF -->
+  <!-- AFTER TAKEOFF CHECKLIST -->
   <div class="section" id="ato">
     <h2>AFTER TAKEOFF CHECKLIST</h2>
     <label><input type="checkbox" data-id="ato1"> GEAR: UP</label>
@@ -110,7 +115,7 @@
     <label><input type="checkbox" data-id="ato5" data-triggers="ldg5"> IGN: OFF</label>
   </div>
 
-  <!-- LANDING -->
+  <!-- LANDING CHECKLIST -->
   <div class="section" id="ldg">
     <h2>LANDING CHECKLIST</h2>
     <label><input type="checkbox" data-id="ldg1"> GEAR: DOWN</label>
@@ -120,7 +125,7 @@
     <label><input type="checkbox" data-id="ldg5"> IGN: CONT</label>
   </div>
 
-  <!-- SHUTDOWN -->
+  <!-- SHUTDOWN CHECKLIST -->
   <div class="section" id="shutdown">
     <h2>SHUTDOWN CHECKLIST</h2>
     <label><input type="checkbox" data-id="shutdown1"> EJECTION PIN: INSERT</label>
@@ -155,7 +160,7 @@
       const id = cb.dataset.id;
       if (localStorage.getItem(id) === "true") {
         cb.checked = true;
-        cb.parentElement.classList.add("completed");
+        cb.parentElement.classList.add("checkbox-completed");
       }
     });
 
@@ -168,34 +173,32 @@
     }
 
     function handleTriggers(cb) {
-      const trigger = cb.dataset.triggers;
-      if (trigger) {
-        const target = document.querySelector(`input[data-id="${trigger}"]`);
-        if (target && !target.checked) {
-          target.parentElement.classList.add("pending");
+      const triggerId = cb.dataset.triggers;
+      if (triggerId) {
+        const target = document.querySelector(`input[data-id="${triggerId}"]`);
+        if (target) {
+          if (cb.checked && !target.checked) {
+            target.parentElement.classList.add("pending");
+          } else {
+            target.parentElement.classList.remove("pending");
+          }
         }
       }
     }
 
-    function checkWaits(cb) {
-      cb.parentElement.classList.remove("pending");
-      if (cb.checked) cb.parentElement.classList.add("completed");
-      else cb.parentElement.classList.remove("completed");
+    function updateCheckbox(cb) {
+      cb.parentElement.classList.remove("pending", "checkbox-completed");
+      if (cb.checked) cb.parentElement.classList.add("checkbox-completed");
     }
 
     checkboxes.forEach(cb => {
       cb.addEventListener("change", () => {
         localStorage.setItem(cb.dataset.id, cb.checked);
-        if (cb.checked) {
-          cb.parentElement.classList.add("completed");
-          handleTriggers(cb);
-        } else {
-          cb.parentElement.classList.remove("completed");
-        }
-        checkWaits(cb);
+        updateCheckbox(cb);
+        handleTriggers(cb);
         updateSections();
       });
-      checkWaits(cb);
+      updateCheckbox(cb);
     });
 
     updateSections();
@@ -203,7 +206,7 @@
     resetBtn.addEventListener("click", () => {
       checkboxes.forEach(cb => {
         cb.checked = false;
-        cb.parentElement.classList.remove("completed","pending");
+        cb.parentElement.classList.remove("checkbox-completed", "pending");
         localStorage.removeItem(cb.dataset.id);
       });
       updateSections();
