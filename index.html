@@ -62,6 +62,19 @@
     button:hover {
       background: darkred;
     }
+#reset {
+    position: fixed;       /* lo fija en la pantalla */
+    bottom: 20px;          /* separación desde abajo */
+    right: 20px;            /* separación desde la izquierda */
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background: red;
+    color: #fff;
+    cursor: pointer;
+    z-index: 1000;         /* para que esté encima de todo */
+  }
     .reset-section {
       background: #3B140D;
     }
@@ -76,7 +89,7 @@
 <!-- START CHECKLIST -->
 <div class="section" id="start">
   <h2>START CHECKLIST</h2>
-  <label><input type="checkbox" data-id="start1" data-triggers="start35"> PARKING BRAKE: SET</label>
+  <label><input type="checkbox" data-id="start1" data-triggers="tx3"> PARKING BRAKE: SET</label>
   <label><input type="checkbox" data-id="start2"> BATTERY: ON</label>
   <label><input type="checkbox" data-id="start3" data-triggers="start19"> GPU: ON</label>
   <label><input type="checkbox" data-id="start4"> BUS TIE: ON</label>
@@ -120,7 +133,7 @@
   <label><input type="checkbox" data-id="tx2" data-triggers="shutdown1"> EJECTION PIN: REMOVE</label>
   <label><input type="checkbox" data-id="tx3" data-triggers="shutdown2"> PARKING BRAKE: RELEASE</label>
   <label><input type="checkbox" data-id="tx4"> FLAPS: TAKE OFF</label>
-  <label><input type="checkbox" data-id="tx5"> TAXI LIGHTS: ON</label>
+  <label><input type="checkbox" data-id="tx5" data-triggers="bto1"> TAXI LIGHTS: ON</label>
   <button class="reset-section">🔄 REINICIAR TAXI</button>
 </div>
 
@@ -128,8 +141,8 @@
 <!-- BEFORE TAKEOFF CHECKLIST -->
 <div class="section" id="bto">
   <h2>BEFORE TAKEOFF</h2>
-  <label><input type="checkbox" data-id="bto1"> LDG LIGHTS: ON</label>
   <label><input type="checkbox" data-id="bto2"> FLAPS: TAKE OFF</label>
+  <label><input type="checkbox" data-id="bto1"> LDG LIGHTS: ON</label>
   <label><input type="checkbox" data-id="bto3" data-triggers="ato5"> IGN: CONT</label>
   <button class="reset-section">🔄 REINICIAR BEFORE TAKEOFF</button>
 </div>
