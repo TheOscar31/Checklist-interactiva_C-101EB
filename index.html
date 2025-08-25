@@ -1,18 +1,22 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta name="viewport" content="width=450, initial-scale=1.0">
+<meta charset="UTF-8">
   <title>DCS Checklist interactiva C-101EB by TheOscar31</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       background: #111;
       color: #eee;
-      padding: 20px;
+      padding: 7px;
     }
     h2 {
       font-size: 30px;
-      margin-top: 30px;
+      margin-top: 20px;
+      margin-bottom: 10px;
+	white-space: normal;
       padding: 10px;
       background: #222;
       border-radius: 8px;
@@ -25,8 +29,9 @@
       display: block;
       padding: 5px;
       margin: 3px 0;
-      font-size: 2em;
+      font-size: 25px;
       border-radius: 5px;
+	white-space: nowrap;
       transition: background 0.3s, color 0.3s;
     }
     label.pending {
@@ -45,11 +50,12 @@
     button {
       /transform: scale(2);/
       margin-top: 20px;
-      padding: 8px 10px;
+      margin-bottom: 10px;
+      padding: 4px 8px;
       font-size: 25px;
       border: 20px;
       border-radius: 8px;
-      background: red;
+      background: #E83131;
       color: #fff;
       cursor: pointer;
     }
@@ -57,7 +63,7 @@
       background: darkred;
     }
     .reset-section {
-      background: #444;
+      background: #3B140D;
     }
     .reset-section:hover {
       background: #666;
@@ -65,7 +71,7 @@
   </style>
 </head>
 <body>
-<h1>DCS Checklist interactiva <br> C-101EB by TheOscar31</h1>
+<h1>DCS Checklist interactiva C-101EB by TheOscar31</h1>
 
 <!-- START CHECKLIST -->
 <div class="section" id="start">
@@ -79,38 +85,49 @@
   <label><input type="checkbox" data-id="start7"> EXTERNAL LIGHTS: ON</label>
   <label><input type="checkbox" data-id="start8"> SEAT: ADJUST</label>
   <label><input type="checkbox" data-id="start9"> COMPUTADOR: ON</label>
-  <label><input type="checkbox" data-id="start10"> FUEL PUMPS: TEST/AUT</label>
+  <label><input type="checkbox" data-id="start10"> FUEL PUMPS: TEST → AUT</label>
   <label><input type="checkbox" data-id="start11"> SUB FUEL PUMP: ON</label>
   <label><input type="checkbox" data-id="start12"> FUEL VALVE: ON</label>
   <label><input type="checkbox" data-id="start13" data-triggers="shutdown14"> INVERTER: NORMAL</label>
   <label><input type="checkbox" data-id="start14"> UHF/VHF: TUNED</label>
-  <label><input type="checkbox" data-id="start15"> ATC: REQUEST START</label>
-  <label><input type="checkbox" data-id="start16"> ANNUNC (4 REDS+1 AMBER)</label>
+  <label><input type="checkbox" data-id="start15"> <span style="color:#7BACD4; font-weight:bold;">ATC: REQUEST START</span></label>
+  <label><input type="checkbox" data-id="start16"> ANNUNC (<span style="color:#E83515;">4 REDS</span>+<span style="color:#EDA524;">1 AMBER</span>)</label>
   <label><input type="checkbox" data-id="start17"> STARTER: ON 2 SEC</label>
-  <label><input type="checkbox" data-id="start18"> <span style="color:#96BD8F; font-weight:bold;"> THROTTLE: IDLE </span></label></label>
+  <label><input type="checkbox" data-id="start18"> <span style="color:#96BD8F; font-weight:bold;"> THROTTLE: IDLE </span></label>
   <label><input type="checkbox" data-id="start19"> GPU: OFF</label>
-  <label><input type="checkbox" data-id="start20"> GENERATOR: RESET, ON</label>
+  <label><input type="checkbox" data-id="start20"> GENERATOR: RESET → ON</label>
   <label><input type="checkbox" data-id="start21"> UHF/VOR/TACAN/VHF: ON</label>
   <label><input type="checkbox" data-id="start22"> STBY HORIZ: UNCAGE</label>
   <label><input type="checkbox" data-id="start23"> IFF: STBY</label>
   <label><input type="checkbox" data-id="start24"> HYDRAULICS: GREEN</label>
-  <label><input type="checkbox" data-id="start25"> AIR BRAKES: TEST, IN</label>
-  <label><input type="checkbox" data-id="start26"> FLAPS: TEST, TAKE OFF</label>
+  <label><input type="checkbox" data-id="start25"> AIR BRAKES: TEST → IN</label>
+  <label><input type="checkbox" data-id="start26"> FLAPS: TEST → TAKE OFF</label>
   <label><input type="checkbox" data-id="start27" data-triggers="shutdown6"> PITOT HEAT: ON</label>
-  <label><input type="checkbox" data-id="start28"> STALL WARNING: TEST, ON</label>
+  <label><input type="checkbox" data-id="start28"> STALL WARNING: TEST → ON</label>
   <label><input type="checkbox" data-id="start29"> INT/EXT LIGHTS: SET</label>
-  <label><input type="checkbox" data-id="start30"> CANOPY: CLOSED, LOCKED</label>
-  <label><input type="checkbox" data-id="start31"> AIR COND: RESET, ON</label>
+  <label><input type="checkbox" data-id="start30"> CANOPY: CLOSED → LOCKED</label>
+  <label><input type="checkbox" data-id="start31"> AIR COND: RESET → ON</label>
   <label><input type="checkbox" data-id="start32"> T.O TRIM: 1,5 DN</label>
   <label><input type="checkbox" data-id="start33"> FLT CONTROLS: CHECK</label>
-  <label><input type="checkbox" data-id="start34" data-triggers="shutdown1"> EJECTION PIN: REMOVE</label>
-  <label><input type="checkbox" data-id="start35" data-triggers="shutdown2"> PARKING BRAKE: RELEASE</label>
+
   <button class="reset-section">🔄 REINICIAR START</button>
 </div>
 
+<!-- TAXI CHECKLIST -->
+<div class="section" id="tx">
+  <h2>TAXI</h2>
+  <label><input type="checkbox" data-id="tx1"><span style="color:#7BACD4; font-weight:bold;"> ATC: REQUEST TAXI</span></label>
+  <label><input type="checkbox" data-id="tx2" data-triggers="shutdown1"> EJECTION PIN: REMOVE</label>
+  <label><input type="checkbox" data-id="tx3" data-triggers="shutdown2"> PARKING BRAKE: RELEASE</label>
+  <label><input type="checkbox" data-id="tx4"> FLAPS: TAKE OFF</label>
+  <label><input type="checkbox" data-id="tx5"> TAXI LIGHTS: ON</label>
+  <button class="reset-section">🔄 REINICIAR TAXI</button>
+</div>
+
+
 <!-- BEFORE TAKEOFF CHECKLIST -->
 <div class="section" id="bto">
-  <h2>BEFORE TAKEOFF CHECKLIST</h2>
+  <h2>BEFORE TAKEOFF</h2>
   <label><input type="checkbox" data-id="bto1"> LDG LIGHTS: ON</label>
   <label><input type="checkbox" data-id="bto2"> FLAPS: TAKE OFF</label>
   <label><input type="checkbox" data-id="bto3" data-triggers="ato5"> IGN: CONT</label>
@@ -119,7 +136,7 @@
 
 <!-- AFTER TAKEOFF CHECKLIST -->
 <div class="section" id="ato">
-  <h2>AFTER TAKEOFF CHECKLIST</h2>
+  <h2>AFTER TAKEOFF</h2>
   <label><input type="checkbox" data-id="ato1"> GEAR: UP</label>
   <label><input type="checkbox" data-id="ato2"> FLAPS: UP</label>
   <label><input type="checkbox" data-id="ato3"> LDG LIGHTS: OFF</label>
@@ -130,7 +147,7 @@
 
 <!-- LANDING CHECKLIST -->
 <div class="section" id="ldg">
-  <h2>LANDING CHECKLIST</h2>
+  <h2>LANDING</h2>
   <label><input type="checkbox" data-id="ldg1"> GEAR: DOWN</label>
   <label><input type="checkbox" data-id="ldg2"> FLAPS: FULL</label>
   <label><input type="checkbox" data-id="ldg3"> LDG LIGHTS: ON</label>
@@ -141,7 +158,7 @@
 
 <!-- AFTER LANDING CHECKLIST -->
 <div class="section" id="afterLanding">
-  <h2>AFTER LANDING CHECKLIST</h2>
+  <h2>AFTER LANDING</h2>
   <label><input type="checkbox" data-id="al1" data-triggers="shutdown4"> FLAPS: T.OFF</label>
   <label><input type="checkbox" data-id="al2"> TRIM: 1.5 DN</label>
   <label><input type="checkbox" data-id="al3"> AIR BRAKES: IN</label>
@@ -152,7 +169,7 @@
 
 <!-- SHUTDOWN CHECKLIST -->
 <div class="section" id="shutdown">
-  <h2>SHUTDOWN CHECKLIST</h2>
+  <h2>SHUTDOWN</h2>
   <label><input type="checkbox" data-id="shutdown1"> EJECTION PIN: INSERT</label>
   <label><input type="checkbox" data-id="shutdown2"> PARKING BRAKE: SET</label>
   <label><input type="checkbox" data-id="shutdown3"> SPEED BRAKE: IN</label>
@@ -172,8 +189,9 @@
   <label><input type="checkbox" data-id="shutdown17"> GENERATOR: OFF</label>
   <label><input type="checkbox" data-id="shutdown18"> BUS TIE: OFF</label>
   <label><input type="checkbox" data-id="shutdown19"> BATTERY: OFF</label>
-  <button class="reset-section">🔄 REINICIAR SHUTDOWN</button>
+  <button class="reset-section">🔄 REINICIAR SHUTDOWN </button>
 </div>
+
 
 <button id="reset">🔄 REINICIAR CHECKLIST</button>
 
